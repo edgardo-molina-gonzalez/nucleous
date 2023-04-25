@@ -1,0 +1,446 @@
+:root {
+    --primario: #6834a6;
+    --blanco: #FFF;
+    --negro: #000000;
+    --fuentePrincipal: 'Poppins', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: var(--fuentePrincipal);
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+h1, h2, h3 {
+    font-weight: 900;
+    margin: 2rem 0;
+}
+h1 {
+    font-size: 5rem;
+}
+h2 {
+    font-size: 4.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* optimizar contenedor para reutilizarse */
+/* cualquier clase que termine en __contenedor tendrá estos atributos */
+[class$="__contenedor"]{
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 90%;
+}
+/* .contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 90%;
+} */
+/*___________________________________________________*/
+
+/* Header */
+
+.header{
+    background-image: url(../img/header_bg.svg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 10rem;
+    padding: 5rem 0;
+}
+
+@media (min-width: 768px){
+    .header{
+    background-size: 50rem;
+    }    
+}
+
+@media (min-width: 992px){
+    .header{
+    background-size: 60rem;
+    }    
+}
+
+@media (min-width: 1280px){
+    .header{
+    background-size: 80rem;
+    }    
+}
+
+@media (min-width: 768px){
+    .header__barra{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.header__logo{
+    width: 15rem;
+    margin: 0 auto 3rem auto;
+}  
+
+@media (min-width: 768px){
+    .header__logo{
+        margin: 0;
+    }
+    .header__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+        align-items: center;
+    }
+}
+
+.header__heading{
+    text-align: center;
+    font-size: 3rem;
+}
+
+@media (min-width: 768px){
+    .header__heading{
+        text-align: left;
+        font-size: 5rem;
+        line-height: 1.2;
+    } 
+}
+
+@media (min-width: 768px){
+    .header__imagen{
+        width: 30rem;
+        margin: 0 auto;
+    }  
+}
+
+.header__boton{
+    background-color: var(--primario);
+    /* permite que el boton tome todo el ancho del contenedor */
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px){
+    .header__boton{
+        padding: 1rem 3rem;
+        display: inline-block;
+    } 
+}
+
+.navegacion{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+@media (min-width: 768px){
+    .navegacion{
+        flex-direction: row;
+        align-items: start;
+        gap: 2rem;
+    } 
+}
+
+.navegacion__link{
+    color: var(--primario);
+}
+
+@media (min-width: 768px){
+    .navegacion__link{
+        color: var(--blanco);
+    }
+}
+
+.navegacion__link--blanco{
+    color: var(--blanco);
+}
+
+.nucleous{
+    margin-top: 3rem;
+}
+
+.nucleous__heading{
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.nucleous__grid{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+@media (min-width: 768px){
+    .nucleous__grid{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 5rem;
+        align-items: center;
+    }
+}
+
+.listado{
+
+}
+
+.listado__elemento{
+    /* 
+    sintaxis de box-shadow:
+       1- extensión orizontal de la sombra izquierda a derecha
+       2- etensión vertical de la sombra de arriba a abajo
+       3- nivel de sombra
+       4- grosor de la sombra 
+    */
+    background-color: var(--blanco);
+    box-shadow: 0px 0px 15px 10px rgb(0 0 0 / .15);
+    padding: 2rem;
+    margin-bottom: 5rem;
+    /* 
+    Los transition agregan transiciones a una propiedad del hover
+    */
+    transition-property: transform;
+    transition-duration: 300ms;
+    /* transition-delay: .5s; */
+}
+
+.listado__elemento:hover{
+    transform: scale(1.1)
+}
+
+@media (min-width: 768px){
+    .listado__elemento--2col{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.listado__heading{
+    font-size: 3rem;
+    color: var(--primario);
+    margin: 0;
+}
+
+.listado__numero{
+    font-size: 6rem;
+    margin: 0;
+    font-weight: 900;
+    color: var(--primario);
+    text-align: center;
+}
+
+@media (min-width: 768px){
+    .listado__numero{
+        flex-basis: 20rem;
+        text-align: right;
+        font-size: 4rem;
+    }
+}
+
+.listado__texto{
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Seccion: Seguridad nucleous */
+
+/* Inicio del posicionamiento */
+/*
+La cantidad de margin que tenga el contendeor debe ser el mismo
+que tenga top y bottom en ::before y ::after
+*/
+.seguridad{
+    background-color: var(--primario);
+    padding: 20rem 0;
+    /* activa el posicionamiento */
+    position: relative;
+    margin: 10rem 0;
+    /* oculta el desbordamiento del scrol horizontal */
+    overflow: hidden;
+}
+
+/* 
+before y after siempre deben tener un content: " "; 
+agrega un bloque arriba y abajo en el contenedor
+*/
+
+.seguridad::before,
+.seguridad::after{
+    content: '';
+    background-color: var(--blanco);
+    height: 20rem;
+    width: 120%;
+    position: absolute;
+}
+/* controla la barra superior del contenedor de seguridad */
+.seguridad::before{
+    top: -10rem;
+    left: 0;
+    transform: rotate(3deg)
+}
+/* controla la barra inferior del contenedor de seguridad */
+.seguridad::after{
+    bottom: -10rem;
+    left: 0;
+    transform: rotate(3deg);
+}
+/* Fin del posicionamiento */
+
+.seguridad__heading{
+    text-align: center;
+    color: var(--blanco);
+    margin-bottom: 5rem;
+}
+
+@media (min-width: 768px){
+    .seguridad__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5rem;
+        align-items: center;
+    }  
+}
+
+/* Seccion: Comisiones */
+
+@media (min-width: 768px){
+    .comisiones__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 5rem;
+        align-items: flex-end;
+    }
+}
+
+@media (min-width: 998px){
+    .comisiones__grid{
+        align-items: center;
+    }
+}
+
+.comisiones__heading{
+    text-align: center;
+}
+
+.comisiones__texto{
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+@media (min-width: 768px){
+    .comisiones__texto{
+        text-align: left;
+    }
+}
+
+/* Seccion: Testimonail */
+.testimoniales{
+    background-color: var(--primario);
+    text-align: center;
+    padding: 5rem 0;
+}
+
+
+.testimoniales__heading{
+    color: var(--blanco);
+}
+
+.testimoniales__grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media (min-width: 768px){
+    .testimoniales__grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4rem;
+    }
+}
+
+/* Posicionamiento de un icono al lado de un texto */
+/*
+position: relative; se usa en el elemento contenedor
+position: absolute; se usa en un elemento dentro del contenedor
+se posiciona mediante la cardinalidad
+es bueno jugar con la posicion en la consola del navegador, copiarla y pegarla en el css
+*/
+.testimonial{
+    background-color: var(--blanco);
+    box-shadow: 0px 0px 15px 3px rgb(0 0 0 / .15);
+    padding: 2rem;
+    position: relative;
+}
+
+.testimonial__texto{
+    padding-left: 4rem;
+}
+/*
+::brefore ayuda a agregar un elemento dentro de otro (iconos, imagenes, lo que sea)
+debe llevar content: ''; o no funciona
+debe llevar un width y un height para que el elemento aparezca
+*/
+.testimonial__texto::before{
+    content: '';
+    background-image: url(../img/comilla.png);
+    background-size: 3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    position: absolute;
+    /* top, left, bottom, right; posicionan el elemento dentro del contenedor */
+    top: 35px;
+    left: 20px;
+}
+
+/* Fin del psicionamiento */
+
+.testimonial__autor{
+    text-align: end;
+    color: var(--primario);
+    font-weight: 700;
+}
+
+.footer{
+    background-color: #5a30a0;
+    padding: 3rem 0;
+}
+
+@media (min-width: 768px){
+    .footer__grid{
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+}
+
+.footer__logo{
+    width: 20rem;
+    margin: 0 auto 4rem auto;
+}
+
+@media (min-width: 768px){
+    .footer__logo{
+        margin: 0;
+    }
+}
+
+
